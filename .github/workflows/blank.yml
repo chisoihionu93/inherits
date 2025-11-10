@@ -27,7 +27,13 @@ jobs:
 
       - name: Install FOSSA CLI
         run: |
-          curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
+          wget -q https://github.com/fossas/fossa-cli/releases/latest/download/fossa-linux-amd64 -O fossa
+          chmod +x fossa
+          mkdir -p $HOME/.local/bin
+          mv fossa $HOME/.local/bin/
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          ls -la $HOME/.local/bin
+          $HOME/.local/bin/fossa version
 
       - name: Run FOSSA Analysis
         env:
