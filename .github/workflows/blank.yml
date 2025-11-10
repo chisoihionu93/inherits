@@ -34,5 +34,3 @@ jobs:
           FOSSA_API_KEY: ${{ secrets.FOSSA_API_KEY }}
         run: |
           fossa analyze
-
-      -
