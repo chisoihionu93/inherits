@@ -37,7 +37,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
           # Verify install
-          fossa version
+          fossa --version
 
       - name: Run FOSSA Analysis
         env:
