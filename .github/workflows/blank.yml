@@ -27,13 +27,17 @@ jobs:
 
       - name: Install FOSSA CLI
         run: |
-          wget -q https://github.com/fossas/fossa-cli/releases/latest/download/fossa-linux-amd64 -O fossa
+          wget https://github.com/fossas/fossa-cli/releases/download/v3.11.9/fossa_3.11.9_linux_amd64.zip
+          
+          # Unzip and install locally
+          unzip fossa_3.11.9_linux_amd64.zip
           chmod +x fossa
           mkdir -p $HOME/.local/bin
           mv fossa $HOME/.local/bin/
           echo "$HOME/.local/bin" >> $GITHUB_PATH
-          ls -la $HOME/.local/bin
-          $HOME/.local/bin/fossa version
+
+          # Verify install
+          fossa version
 
       - name: Run FOSSA Analysis
         env:
